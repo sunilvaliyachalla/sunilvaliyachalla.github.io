@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunil's Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE  occasion: a developer's personal site for recruiters, confident and tidy
+   IDEA   his own "Digital Workspace" canvas from the myportfolio repo: one spec card wired to the apps it produced
+   PICTURE hub canvas: spec.md in the centre, ten app chips wired to it with travelling pulses
+   COLOUR ink #07070f ground, glass panels, violet #7c5cfc / #a78bfa lead, teal #2dd4bf support, pink #f472b6 accent
+   TYPE   Plus Jakarta Sans 700-800 + Inter
+   LAYOUT laptop: name and actions across the top, canvas full width beneath, stats strip; phone: name, canvas as a trunk circuit, stats */
+:root{color-scheme:dark;--bg:#07070f;--panel:rgba(16,16,28,.8);--edge:rgba(255,255,255,.08);--ink:#f4f4f8;--soft:#d2d2de;--mute:#a3a3b8;--vio:#7c5cfc;--vio2:#a78bfa;--teal:#2dd4bf;--disp:'Plus Jakarta Sans',Inter,system-ui,sans-serif}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:80px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle,rgba(148,163,184,.09) 1px,transparent 1.3px) 0 0/26px 26px,radial-gradient(60vw 40vw at 88% -10%,rgba(124,92,252,.22),transparent 70%),radial-gradient(50vw 40vw at -10% 70%,rgba(45,212,191,.07),transparent 70%)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,4vw,44px);font-weight:700}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(28px,4vw,64px);padding-inline:max(5vw,16px)}
+.glass{background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.012)),var(--panel);border:1px solid var(--edge);border-radius:16px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--vio2);outline-offset:2px}
+.nav{position:sticky;top:0;z-index:5;background:rgba(7,7,15,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--edge);padding-inline:max(5vw,16px)}
+.navin{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:18px;text-decoration:none;min-height:44px}
+.mono{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#6d5cf6,#a855f7);font-size:16px}
+.links{display:flex;gap:2px;margin-left:auto;overflow-x:auto}
+.links a{flex:none;display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:10px;text-decoration:none;color:var(--mute);font-size:15px}
+.links a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px 40px;align-items:end}
+.hero h1{font-size:clamp(60px,9vw,104px);font-weight:800}
+.lead{font-size:clamp(18px,2vw,22px);line-height:1.45;color:var(--soft);max-width:36ch;margin:14px 0 0}
+.side{display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-self:end}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--soft);padding:6px 12px;border-radius:999px;border:1px solid rgba(45,212,191,.35);background:rgba(45,212,191,.08)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;white-space:nowrap}
+.btn.pri{background:linear-gradient(94deg,#6d5cf6,#8b5cf6 55%,#a855f7);box-shadow:0 10px 30px rgba(124,92,252,.35)}
+.btn.pri:hover{filter:brightness(1.1)}
+.btn.gho{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.14)}
+.btn.gho:hover{background:rgba(255,255,255,.08)}
+.hub{margin-top:28px;border-radius:20px;border:1px solid var(--edge);background:radial-gradient(circle,rgba(148,163,184,.13) 1px,transparent 1.3px) 0 0/22px 22px,rgba(10,10,20,.6);padding:22px}
+.fig{position:relative;height:380px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.w{fill:none;stroke:rgba(167,139,250,.26);stroke-width:1.5}
+.p{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:3 23;animation:flow 2.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-26}}
+.chip{position:absolute;display:flex;align-items:center;gap:9px;height:46px;padding:0 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap;background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),#10101b;border:1px solid var(--edge);transition:border-color .2s,transform .2s}
+.chip:hover{border-color:rgba(167,139,250,.65);transform:translateY(-1px)}
+.chip i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 12px var(--c)}
+.chip span{overflow:hidden;text-overflow:ellipsis}
+.spec{position:absolute;padding:16px 18px;border-radius:14px;background:linear-gradient(165deg,rgba(124,92,252,.14),rgba(255,255,255,.02)),#0f0f1c;border:1px solid rgba(167,139,250,.5);box-shadow:0 0 46px rgba(124,92,252,.3)}
+.spec-h{display:flex;align-items:center;gap:8px;font:600 15px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#fff}
+.spec ul{list-style:none;margin:14px 0 12px;padding:0;display:grid;gap:8px;font-size:14px;color:var(--soft)}
+.spec li{display:flex;gap:9px;align-items:center}
+.spec li::before{content:"";flex:none;width:16px;height:16px;border-radius:4px;background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-5' fill='none' stroke='%2307070f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.spec-f{font-size:13px;color:var(--vio2);border-top:1px solid var(--edge);padding-top:10px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+.stat{padding:16px 18px}
+.stat b{display:block;font-family:var(--disp);font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700}
+.stat span{color:var(--mute);font-size:14px}
+.sh{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+.sub{color:var(--mute);margin:10px 0 0;max-width:62ch}
+.note{font-size:13px;color:var(--mute);margin:8px 0 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:inherit;font-size:14px;font-weight:500;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--edge);background:rgba(255,255,255,.03);color:var(--mute);cursor:pointer}
+.filters button:hover{color:var(--ink)}
+.filters button[aria-pressed=true]{color:#fff;background:rgba(124,92,252,.22);border-color:rgba(167,139,250,.6)}
+.filters small{margin-left:7px;font-size:13px;opacity:.75}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card.wide{grid-column:span 2}
+.card{display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s,transform .2s}
+.card:hover{border-color:rgba(167,139,250,.45);transform:translateY(-2px)}
+.card:target{box-shadow:0 0 0 1.5px rgba(167,139,250,.85),0 0 46px rgba(124,92,252,.4)}
+.card[hidden]{display:none}
+.art{display:block;width:100%;height:132px;border-bottom:1px solid var(--edge);background:#0b0b16}
+.cb{padding:16px 18px 10px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:19px;font-weight:700}
+.card p{margin:0;color:var(--soft);font-size:15px;line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:13px;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--soft);white-space:nowrap}
+.repo{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:600;color:var(--vio2);text-decoration:none}
+.repo:hover{color:#fff}
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;position:relative}
+.route::before{content:"";position:absolute;left:28px;right:calc(25% - 18px);top:27px;height:2px;background:linear-gradient(90deg,var(--vio),var(--teal))}
+.st .ic{position:relative;z-index:1;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:#11111d;border:1px solid rgba(167,139,250,.5);color:var(--vio2)}
+.st:last-child .ic{border-color:rgba(45,212,191,.6);color:var(--teal)}
+.st h3{font-size:20px;margin:18px 0 8px}
+.st p{margin:0;color:var(--mute);font-size:15px}
+.kit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.grp{padding:18px}
+.grp h3{font-size:17px;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.grp h3 i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+.grp div{display:flex;flex-wrap:wrap;gap:6px}
+.more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mr{display:flex;flex-direction:column;gap:2px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+.mr:hover{border-color:rgba(167,139,250,.45)}
+.mr b{font-size:15px;overflow-wrap:anywhere}
+.mr span{color:var(--mute);font-size:14px}
+.cta{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:center;padding:clamp(22px,4vw,44px);background:linear-gradient(135deg,rgba(124,92,252,.2),rgba(45,212,191,.06)),var(--panel)}
+.cta .btns{justify-self:end}
+footer{padding:24px max(5vw,16px) 40px;color:var(--mute);font-size:14px;border-top:1px solid var(--edge)}
+@media(max-width:960px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.route{grid-template-columns:repeat(2,minmax(0,1fr))}.route::before{display:none}.kit{grid-template-columns:repeat(2,minmax(0,1fr))}.more{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.hero,.cta{grid-template-columns:minmax(0,1fr)}.side,.cta .btns{justify-self:start}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.grid{grid-template-columns:minmax(0,1fr)}.card.wide{grid-column:auto}.links{margin-left:0;width:100%}.hub{padding:14px}.chip{font-size:13px;padding:0 10px;gap:7px}.route,.kit,.more{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.p{animation:none}html{scroll-behavior:auto}.card,.chip{transition:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap navin">
+  <a class="brand" href="#top"><span class="mono">S</span>Sunil</a>
+  <div class="links"><a href="#work">Work</a><a href="#process">How I build</a><a href="#toolkit">Toolkit</a><a href="#contact">Contact</a></div>
+</div></nav>
+
+<header class="band" id="top"><div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Sunil</h1>
+      <p class="lead">Full-stack developer building AI-integrated apps, from a written spec to tested, working software.</p>
+    </div>
+    <div class="side">
+      <span class="status"><i></i>Open to new roles</span>
+      <div class="btns">
+        <a class="btn pri" href="#work">See the 10 apps</a>
+        <a class="btn gho" href="https://github.com/sunilvaliyachalla" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
+    </div>
+  </div>
+  <div class="hub" aria-label="Ten AI-integrated apps built from one spec-driven workflow">
+    <div class="fig" id="hub">
+      <svg aria-hidden="true"></svg>
+      <div class="spec" id="spec">
+        <div class="spec-h"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>spec.md</div>
+        <ul><li>User stories</li><li>Acceptance criteria</li><li>API contract</li><li>Test plan</li></ul>
+        <div class="spec-f">spec → plan → build → test</div>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat glass"><b>10</b><span>AI-integrated apps</span></div>
+    <div class="stat glass"><b>50+</b><span>repositories on GitHub</span></div>
+    <div class="stat glass"><b>Spec first</b><span>every build starts written down</span></div>
+    <div class="stat glass"><b>Full stack</b><span>web, mobile and APIs</span></div>
+  </div>
+</div></header>
+
+<section class="band" id="work"><div class="wrap">
+  <div class="sh">
+    <div>
+      <h2>Ten AI-integrated apps</h2>
+      <p class="sub">Products across hiring, health, finance, support and engineering, each with AI built into the core workflow.</p>
+      <p class="note">Summaries are drafts based on repository names. Check each one before sharing this page.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="band" id="process"><div class="wrap">
+  <div class="sh"><div><h2>Spec first, then code</h2><p class="sub">Several of these apps were built spec-driven: the requirements are written and agreed before any code exists, so the AI and I build against the same target.</p></div></div>
+  <div class="route">
+    <div class="st"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><h3>Write the spec</h3><p>User stories, acceptance criteria and API contracts, written down before the first line of code.</p></div>
+    <div class="st"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h6v5H4zM14 14h6v5h-6z"/><path d="M7 10v4a2 2 0 0 0 2 2h5"/></svg></div><h3>Plan the build</h3><p>Turn the spec into architecture, a data model and small tasks that can each be checked.</p></div>
+    <div class="st"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4M13 6l-2 12"/></svg></div><h3>Build with an AI pair</h3><p>Generate and refine code with Claude, reviewing every change against the spec.</p></div>
+    <div class="st"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg></div><h3>Test and ship</h3><p>End-to-end tests with Playwright and Selenium prove each acceptance criterion before release.</p></div>
+  </div>
+</div></section>
+
+<section class="band" id="toolkit"><div class="wrap">
+  <div class="sh"><div><h2>Toolkit</h2><p class="sub">Languages, frameworks and tools I have shipped with, taken from my GitHub repositories.</p></div></div>
+  <div class="kit" id="kit"></div>
+</div></section>
+
+<section class="band" id="more"><div class="wrap">
+  <div class="sh"><div><h2>More on GitHub</h2><p class="sub">Earlier builds and experiments beyond the ten apps.</p></div></div>
+  <div class="more" id="morelist"></div>
+</div></section>
+
+<section class="band" id="contact"><div class="wrap">
+  <div class="cta glass">
+    <div>
+      <h2>Hiring a full-stack or AI developer?</h2>
+      <p class="sub">I'm happy to walk you through any project above, including the spec it was built from and the tests that check it.</p>
+    </div>
+    <div class="btns">
+      <a class="btn pri" href="https://github.com/sunilvaliyachalla" target="_blank" rel="noopener">Message me on GitHub</a>
+      <a class="btn gho" href="#work">Back to projects</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Sunil. github.com/sunilvaliyachalla</div></footer>
+
+<script>
+{
+const P=[
+{s:'talentpoolforjob',n:'Talent Pool for Jobs',k:'Talent pool',g:'people',m:'net',c:'#a78bfa',d:'A hiring platform that keeps a pool of candidates and uses AI to help match people with job openings.'},
+{s:'aidiseaseprediction',n:'AI Disease Prediction',k:'Disease AI',g:'health',m:'line',c:'#2dd4bf',d:'Takes health inputs and returns an AI-driven prediction of likely conditions, to support early checks.'},
+{s:'customersupport',r:'customersupport-',n:'AI Customer Support',k:'Support AI',g:'ai',m:'net',c:'#f472b6',d:'An AI assistant that answers customer questions and helps support agents resolve tickets faster.'},
+{s:'ai-service',n:'AI Service',k:'AI service',g:'ai',m:'net',c:'#60a5fa',d:'A reusable backend service that wraps LLM calls, so other apps can add AI features through one API.'},
+{s:'sharemarkettradingapp',n:'Share Market Trading App',k:'Trading app',g:'finance',m:'line',c:'#fbbf24',d:'A stock trading app with AI-assisted market insights alongside watchlists and orders.'},
+{s:'blockchainbank',n:'Blockchain Bank',k:'Blockchain',g:'finance',m:'blocks',c:'#a78bfa',d:'Banking features on a blockchain ledger, with AI built into the customer experience.'},
+{s:'socialmediapp',n:'Social Media App',k:'Social app',g:'people',m:'net',c:'#2dd4bf',d:'A social platform for posts and connections, with AI features for creating and surfacing content.'},
+{s:'inventory',n:'Inventory Manager',k:'Inventory',g:'ops',m:'blocks',c:'#60a5fa',d:'Tracks stock across items and locations, with AI help for reorder and stock decisions.'},
+{s:'buildingplancad',n:'Building Plan CAD',k:'Plan CAD',g:'ops',m:'plan',c:'#f472b6',d:'A tool for drawing building plans, with AI assistance for room layouts.'},
+{s:'charityservice',n:'Charity Service',k:'Charity',g:'people',m:'line',c:'#fbbf24',d:'A platform connecting donors with causes, using AI to help match and report on donations.'}
+];
+const G=[['all','All'],['ai','AI assistants'],['people','People'],['finance','Finance'],['health','Health'],['ops','Business and engineering']];
+const gn=Object.fromEntries(G);
+const K=[
+['AI and LLMs','#a78bfa',['Claude','LLM APIs','RAG','AI agents','LangGraph','Ollama']],
+['Backend and data','#2dd4bf',['Java','Spring Boot','Microservices','Node.js','NestJS','ASP.NET MVC','PostgreSQL','SQL tuning']],
+['Frontend and mobile','#f472b6',['React','Next.js','TypeScript','Tailwind','Android','iOS','Flutter']],
+['Quality and more','#fbbf24',['Playwright','Selenium','Performance testing','Blockchain','WebRTC','MATLAB']]
+];
+const M=[
+['microservice-springboot','Microservices with Spring Boot'],
+['perrtopeervideocall','Peer-to-peer video calling'],
+['playwrightqa','Playwright end-to-end test suite'],
+['IPHONEBIOMETRYAPP','iOS app with biometric sign-in'],
+['myragusingllm','Retrieval-augmented generation with an LLM'],
+['ollamaagentmode','AI agent on local models with Ollama']
+];
+const GH='https://github.com/sunilvaliyachalla/';
+
+const art=(p,i,W=320)=>{
+  let s=(i+11)*7919%2147483647;const r=()=>(s=s*16807%2147483647)/2147483647;
+  const H=132,c=p.c,id='g'+i+'w'+W,R=W-24;
+  let o=`<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".45"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></linearGradient></defs>`;
+  if(p.m==='net'){
+    const N=[];for(let k=0;k<Math.round(W/23);k++)N.push([18+r()*(W-36),14+r()*104,2+r()*5]);N.push([W/2+(r()-.5)*60,66,11]);
+    for(let a=0;a<N.length;a++)for(let b=a+1;b<N.length;b++){const dx=N[a][0]-N[b][0],dy=N[a][1]-N[b][1];if(dx*dx+dy*dy<5600)o+=`<line x1="${N[a][0].toFixed(1)}" y1="${N[a][1].toFixed(1)}" x2="${N[b][0].toFixed(1)}" y2="${N[b][1].toFixed(1)}" stroke="${c}" stroke-opacity=".35"/>`}
+    N.forEach(n=>o+=`<circle cx="${n[0].toFixed(1)}" cy="${n[1].toFixed(1)}" r="${n[2].toFixed(1)}" fill="${c}" fill-opacity="${n[2]>9?1:.7}"/>`);
+  }else if(p.m==='line'){
+    let y=84;const pts=[];for(let k=0;k<=24;k++){y=Math.max(22,Math.min(112,y+(r()-.55)*30));pts.push([k*W/24,y])}
+    if(p.g==='health'){pts[12][1]=24;pts[13][1]=112;pts[11][1]=78}
+    const d=pts.map((q,k)=>(k?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join('');
+    o+=`<path d="${d}L${W} ${H}L0 ${H}Z" fill="url(#${id})"/><path d="${d}" fill="none" stroke="${c}" stroke-width="2.5" stroke-linejoin="round"/><circle cx="${W-6}" cy="${pts[24][1].toFixed(1)}" r="5" fill="${c}"/>`;
+  }else if(p.m==='blocks'){
+    const B=[],nb=Math.floor((W-20)/60),bx=(W-(nb*60-16))/2;for(let k=0;k<nb;k++)B.push([bx+k*60,30+r()*34]);
+    B.forEach((b,k)=>{if(k)o+=`<line x1="${B[k-1][0]+44}" y1="${(B[k-1][1]+22).toFixed(1)}" x2="${b[0]}" y2="${(b[1]+22).toFixed(1)}" stroke="${c}" stroke-opacity=".6" stroke-width="2"/>`});
+    B.forEach((b,k)=>{o+=`<rect x="${b[0]}" y="${b[1].toFixed(1)}" width="44" height="44" rx="8" fill="${c}" fill-opacity="${k===nb-1?.9:.18}" stroke="${c}" stroke-opacity=".7"/>`;for(let q=0;q<3;q++)o+=`<rect x="${b[0]+9}" y="${(b[1]+9+q*9).toFixed(1)}" width="${(14+r()*12).toFixed(1)}" height="4" rx="2" fill="${k===nb-1?'#07070f':c}" fill-opacity="${k===nb-1?.7:.6}"/>`});
+  }else{
+    const vx=24+(R-24)*(.32+r()*.18),hy=52+r()*24,vx2=vx+(R-vx)*(.35+r()*.3);
+    o+=`<rect x="24" y="16" width="${vx-24}" height="100" fill="${c}" fill-opacity=".1"/><rect x="${vx}" y="16" width="${R-vx}" height="${hy-16}" fill="${c}" fill-opacity=".2"/><rect x="${vx2}" y="${hy}" width="${R-vx2}" height="${116-hy}" fill="${c}" fill-opacity=".32"/>`;
+    o+=`<g fill="none" stroke="${c}" stroke-width="3" stroke-linecap="square"><rect x="24" y="16" width="${R-24}" height="100"/><path d="M${vx} 16V${hy-14}M${vx} ${hy+12}V116M${vx} ${hy}H${vx2-16}M${vx2} ${hy}H${R}M${vx2} ${hy}V116"/></g>`;
+    o+=`<g fill="none" stroke="${c}" stroke-opacity=".7" stroke-width="1.5"><path d="M${vx} ${hy-14}A26 26 0 0 1 ${vx+26} ${hy+12}"/><path d="M${vx2-16} ${hy}A16 16 0 0 0 ${vx2} ${hy+16}"/></g>`;
+  }
+  return `<svg class="art" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${o}</svg>`;
+};
+
+const grid=document.getElementById('grid');
+grid.innerHTML=P.map((p,i)=>`<article class="card glass" id="p-${p.s}" data-g="${p.g}">${art(p,i)}<div class="cb"><h3>${p.n}</h3><p>${p.d}</p><div class="tags"><span class="tag">AI-integrated</span><span class="tag">${gn[p.g]}</span></div><a class="repo" href="${GH}${p.r||p.s}" target="_blank" rel="noopener">View code on GitHub →</a></div></article>`).join('');
+
+const cards=[...grid.querySelectorAll('.card')];
+const wide=on=>{cards.forEach((c,i)=>{const w=on&&(i===0||i===cards.length-1);if(c.classList.contains('wide')!==w){c.classList.toggle('wide',w);c.querySelector('.art').outerHTML=art(P[i],i,w?680:320)}})};wide(true);
+const fl=document.getElementById('filters');
+fl.innerHTML=G.map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==='all'}">${l}<small>${k==='all'?P.length:P.filter(p=>p.g===k).length}</small></button>`).join('');
+fl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;fl.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));grid.querySelectorAll('.card').forEach(c=>{c.hidden=!(k==='all'||c.dataset.g===k)});wide(k==='all')});
+
+document.getElementById('kit').innerHTML=K.map(([t,c,a])=>`<div class="grp glass" style="--c:${c}"><h3><i></i>${t}</h3><div>${a.map(x=>`<span class="tag">${x}</span>`).join('')}</div></div>`).join('');
+document.getElementById('morelist').innerHTML=M.map(([r,d])=>`<a class="mr glass" href="${GH}${r}" target="_blank" rel="noopener"><b>${r}</b><span>${d}</span></a>`).join('');
+
+const fig=document.getElementById('hub'),sv=fig.querySelector('svg'),spec=document.getElementById('spec');
+fig.insertAdjacentHTML('beforeend',P.map(p=>`<a class="chip" href="#p-${p.s}" style="--c:${p.c}"><i></i><span>${p.k}</span></a>`).join(''));
+const chips=[...fig.querySelectorAll('.chip')];
+const bez=(x1,y1,x2,y2)=>{const m=(x1+x2)/2;return `M${x1.toFixed(1)} ${y1.toFixed(1)}C${m.toFixed(1)} ${y1.toFixed(1)} ${m.toFixed(1)} ${y2.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`};
+let lastW=0;
+const lay=()=>{
+  const W=fig.clientWidth;if(!W||W===lastW)return;lastW=W;
+  const ds=[];let H;
+  if(W>=700){
+    const cw=Math.round(Math.min(220,Math.max(160,W*.2))),ch=46;H=Math.round(Math.max(360,Math.min(420,W*.34)));
+    const gy=(H-5*ch)/4,sw=Math.min(300,W-2*cw-140);
+    spec.style.width=sw+'px';const sh=spec.offsetHeight,sx=(W-sw)/2,sy=(H-sh)/2;
+    spec.style.left=sx+'px';spec.style.top=sy+'px';
+    chips.forEach((c,i)=>{const row=i%5,right=i>=5,x=right?W-cw:0,y=row*(ch+gy);Object.assign(c.style,{left:x+'px',top:y+'px',width:cw+'px'});const cy=y+ch/2,ty=sy+sh*(.18+.64*row/4);ds.push([right?bez(sx+sw,ty,x,cy):bez(x+cw,cy,sx,ty),P[i].c])});
+  }else{
+    const sw=Math.min(340,W);spec.style.width=sw+'px';
+    const sh=spec.offsetHeight,sx=(W-sw)/2;spec.style.left=sx+'px';spec.style.top='0px';
+    const gap=22,cw=(W-gap)/2,ch=44,rg=12,t0=sh+40,mx=W/2;H=t0+5*ch+4*rg;
+    ds.push([`M${mx} ${sh}V${t0+4*(ch+rg)+ch/2}`,'#a78bfa']);
+    chips.forEach((c,i)=>{const row=i%5,right=i>=5,x=right?cw+gap:0,y=t0+row*(ch+rg);Object.assign(c.style,{left:x+'px',top:y+'px',width:cw+'px'});const cy=y+ch/2;ds.push([`M${mx} ${cy}H${right?x:x+cw}`,P[i].c])});
+  }
+  fig.style.height=H+'px';
+  sv.innerHTML=ds.map(([d])=>`<path class="w" d="${d}"/>`).join('')+ds.map(([d,c],i)=>`<path class="p" d="${d}" stroke="${c}" style="animation-delay:${(-i*.37).toFixed(2)}s"/>`).join('');
+};
+const ro=new ResizeObserver(lay);ro.observe(fig);lay();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{lastW=0;lay()});
+}
+</script>
+</body>
+</html>
